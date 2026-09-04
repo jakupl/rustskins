@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
+    "deposit": "tsx src/deposit.ts",
     "build": "tsc",
     "start": "node dist/index.js"
   },

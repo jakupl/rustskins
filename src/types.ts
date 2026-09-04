@@ -58,3 +58,17 @@ export type UndercutPlan = {
   updates: PlannedUpdate[];
   skipped: SkippedListing[];
 };
+
+export type SteamInventoryItem = {
+  steamItemId: number;
+  name: string;
+  amount: number;
+  tradable: boolean;
+  steamPrice: number | null;
+};
+
+export type SteamDepositItem = {
+  steamItemId: number;
+  amount: number;
+  price: number;
+};
