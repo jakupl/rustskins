@@ -25,3 +25,36 @@ export type JoinedRow = {
   listingId: number | null;
   floorPrice: number;
 };
+
+export type OwnListing = {
+  itemId: number;
+  name: string;
+  amount: number;
+  price: number;
+  sellerFeePerItem: number;
+};
+
+export type ListingPriceUpdate = {
+  itemId: number;
+  amount: number;
+  price: number;
+  sellerFeePerItem: number;
+  newPrice: number;
+};
+
+export type PlannedUpdate = ListingPriceUpdate & {
+  name: string;
+  cheapest: number | null;
+  floor: number;
+  reason: "undercut" | "clamped-to-floor" | "no-competition";
+};
+
+export type SkippedListing = {
+  name: string;
+  reason: "no-deposit" | "below-floor" | "already-cheapest" | "no-change";
+};
+
+export type UndercutPlan = {
+  updates: PlannedUpdate[];
+  skipped: SkippedListing[];
+};
