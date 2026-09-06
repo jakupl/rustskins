@@ -72,3 +72,56 @@ export type SteamDepositItem = {
   amount: number;
   price: number;
 };
+
+export type MarketBuyOrder = {
+  item: string;
+  price: number;
+  count: number;
+};
+
+export type OwnBuyOrder = {
+  itemId: number;
+  name: string;
+  amount: number;
+  price: number;
+  active: boolean;
+  keepActive: boolean;
+};
+
+export type NewBuyOrder = {
+  itemId: number;
+  price: number;
+  amount: number;
+  keepActive: boolean;
+};
+
+export type BuyOrderPriceUpdate = {
+  itemId: number;
+  state: "active" | "paused";
+  amount: number;
+  price: number;
+  newPrice: number;
+  keepActive: boolean;
+  newKeepActive: boolean;
+};
+
+export type PlannedBuyOrder = NewBuyOrder & {
+  name: string;
+  highest: number | null;
+  deposit: number;
+};
+
+export type PlannedBuyOrderUpdate = BuyOrderPriceUpdate & {
+  name: string;
+};
+
+export type SkippedBuyOrder = {
+  name: string;
+  reason: "no-deposit" | "no-item-id" | "capped" | "already-highest" | "dust" | "over-cap" | "below-minimum";
+};
+
+export type BuyOrderPlan = {
+  place: PlannedBuyOrder[];
+  update: PlannedBuyOrderUpdate[];
+  skipped: SkippedBuyOrder[];
+};

@@ -23,4 +23,12 @@ export const config = {
     const parsed = Number.parseInt(raw, 10);
     return Number.isFinite(parsed) && parsed > 0 ? parsed : 20;
   },
+  get maxNewOrders() {
+    const raw = process.env.MAX_NEW_ORDERS;
+    if (raw === undefined || raw === "") {
+      return null;
+    }
+    const parsed = Number.parseInt(raw, 10);
+    return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+  },
 };
